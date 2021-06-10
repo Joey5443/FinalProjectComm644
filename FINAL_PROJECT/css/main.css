@@ -1,0 +1,37 @@
+
+
+form {
+    padding: 30px;  
+  }
+  
+  .hidden {
+      display: none;
+  }
+  .open {
+      display: block;
+  }
+  .justifyContent {
+      display: flex;
+      justify-content: space-between;
+  }
+  .handleError {
+      color: red;
+  }
+  #pOtherHelperInfo {
+      color: orange;
+  }
+  #btnPayment {
+      margin-left: 30px;
+  }
+  
+  body .jumbotron {
+      margin-bottom: 0;
+  }
+  
+  .navbar-light .navbar-brand {
+      margin-right: 115px;
+  }
+  
+  #idCardType {
+      color: rgb(3, 13, 143); 
+  }

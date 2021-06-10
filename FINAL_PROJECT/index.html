@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Order Form</title>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Pizza Order Form</h1>
+            <p class="lead">Build your own pizza</p>
+        </div>
+    </div>
+    <nav class="navbar navbar-light bg-light sticky-top">
+        <span class="navbar-brand mb-0 h1 ml-auto">Total: $<span class="priceTotal"></span></span>
+    </nav>
+    <!-- <div class="container"> -->
+    <!-- DELIVERY LOCATION -->
+    <!-- <div id="pizzaOrderForm" class="hidden"> -->
+    <div id="pizzaOrderForm" class="container">
+        <div class="row">
+            <form class="form-horizontal">
+                <fieldset>
+                    <!-- Address form -->
+
+                    <h2>Delivery Address</h2>
+
+                    <!-- full-name input-->
+                    <div class="control-group">
+                        <label class="control-label">Full Name</label>
+                        <div class="controls">
+                            <input id="fullName" name="fullName" type="text" placeholder="Full Name"
+                                class="input-xlarge" />
+                            <!-- <p class="help-block"></p> -->
+                            <p class="handleError" id="fullNameError"></p>
+                        </div>
+                    </div>
+
+                    <!-- address type -->
+                    <div class="control-group">
+                        <label class="control-label">Address Type</label>
+                        <div class="controls addressType">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button"
+                                    id="dropdownMenuButtonAddressType" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Choose Type
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButtonAddressType">
+                                    <a class="dropdown-item" href="#">House</a>
+                                    <a class="dropdown-item" href="#">Apartment</a>
+                                    <a class="dropdown-item" href="#">Business</a>
+                                    <a class="dropdown-item" href="#">Campus</a>
+                                    <a class="dropdown-item" href="#">Hotel</a>
+                                    <a class="dropdown-item" href="#">Dorm</a>
+                                    <a class="dropdown-item" href="#">Other</a>
+                                </div>
+                            </div>
+                            <p id="pOtherHelperInfo"></p>
+                        </div>
+                        <div class="controls hidden">
+                            <input id="addressType" name="addressType" type="text" placeholder="Address Type"
+                                class="input-xlarge" />
+                            <!-- <p class="help-block">Please, specify Address Type</p> -->
+                            <p class="handleError" id="typeError"></p>
+                        </div>
+                    </div>
+
+                    <!-- address-line1 input-->
+                    <div class="control-group">
+                        <label class="control-label">Address Line 1</label>
+                        <div class="controls">
+                            <input id="streetAddress" name="address-line1" type="text" placeholder="Street address"
+                                class="input-xlarge" />
+                            <!-- <p class="help-block">Street address</p> -->
+                            <p class="handleError" id="addressLine1Error"></p>
+                        </div>
+                    </div>
+                    <!-- address-line2 input-->
+                    <div class="control-group">
+                        <label class="control-label">Address Line 2 - Optional</label>
+                        <div class="controls">
+                            <input id="streetAddress2" name="address-line2" type="text"
+                                placeholder="Apartment, suite , unit, building, floor, etc." class="input-xlarge" />
+
+                            <!-- <p class="help-block">
+                  Apartment, suite , unit, building, floor, etc.
+                </p> -->
+                            <p class="handleError" id=""></p>
+                        </div>
+                    </div>
+                    <!-- city input-->
+                    <div class="control-group">
+                        <label class="control-label">City / Town</label>
+                        <div class="controls">
+                            <input id="city" name="city" type="text" placeholder="city" class="input-xlarge" />
+                            <!-- <p class="help-block"></p> -->
+                            <p class="handleError" id="cityError"></p>
+                        </div>
+                    </div>
+                    <!-- region input-->
+                    <div class="control-group">
+                        <label class="control-label">State</label>
+                        <div class="controls">
+                            <input id="state" name="state" type="text" placeholder="state" class="input-xlarge" />
+                            <!-- <p class="help-block"></p> -->
+                            <p class="handleError" id="stateError"></p>
+                        </div>
+                    </div>
+                    <!-- postal-code input-->
+                    <div class="control-group">
+                        <label class="control-label">Zip / Postal Code</label>
+                        <div class="controls">
+                            <input id="zip" name="zip" type="text" placeholder="zip code" class="input-xlarge" />
+                            <!-- <p class="help-block"></p> -->
+                            <p class="handleError" id="zipError"></p>
+                        </div>
+                    </div>
+                    <!-- phone number input-->
+                    <div class="control-group">
+                        <label class="control-label">Phone Number</label>
+                        <div class="controls">
+                            <input id="phone" name="phone" type="tel" placeholder="Phone Number" class="input-xlarge" />
+                            <!-- <p class="help-block"></p> -->
+                            <p class="handleError" id="phoneError"></p>
+                        </div>
+                    </div>
+                    <!-- email input-->
+                    <div class="control-group">
+                        <label class="control-label">Email</label>
+                        <div class="controls">
+                            <input id="email" name="email" type="email" placeholder="email" class="input-xlarge" />
+                            <!-- <p class="help-block"></p> -->
+                            <p class="handleError" id="emailError"></p>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <!-- BUILD ORDER -->
+        <div class="container">
+            <div class="justifyContent">
+                <h2>Build Your Order</h2>
+                <!-- <h4>Total: $<span class="priceTotal"></span></h4> -->
+            </div>
+            <div class="dougnOption">
+                <h4>Select dough option:</h4>
+                <div class="btn-group btn-group-toggle radioBtn" data-toggle="buttons">
+                    <!-- <label class="btn btn-outline-success active">
+                <input type="radio" name="options" id="option1" checked /> Hand Tossed
+              </label> -->
+                    <label class="btn btn-outline-success">
+                        <input type="radio" name="options" id="option1" /> Hand Tossed
+                    </label>
+                    <label class="btn btn-outline-success">
+                        <input type="radio" name="options" id="option2" /> Thin Crust
+                    </label>
+                    <label class="btn btn-outline-success">
+                        <input type="radio" name="options" id="option3" /> New York Style
+                    </label>
+                    <label class="btn btn-outline-success">
+                        <input type="radio" name="options" id="option4" /> Gluten Free
+                    </label>
+                </div>
+                <p id="selectedDough"></p>
+            </div>
+
+            <div class="sizeOption">
+                <h4>Select Size</h4>
+                <div id="selectSizeDiv" class="dropdown">Choose a Dough First</div>
+                <p id="selectedDoughSize"></p>
+            </div>
+
+            <div class="hiddenDiv hidden">
+                <div class="cheeseOption">
+                    <h4>Select Cheese</h4>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonForCheese"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choose Cheese
+                        </button>
+                        <div class="cheeseDropdown dropdown-menu" aria-labelledby="dropdownMenuButtonForCheese">
+                            <a class="dropdown-item" href="#" id="lightCheese">Light: no charge</a>
+                            <a class="dropdown-item" href="#" id="defaultCheese">Normal (default): no charge</a>
+                            <a class="dropdown-item" href="#" id="extraCheese">Extra: +$2.99</a>
+                            <a class="dropdown-item" href="#" id="doubleCheese">Double: +$3.99</a>
+                        </div>
+                    </div>
+                    <p id="selectedCheese">
+                        Selected Cheese - Normal (default): no charge
+                    </p>
+                </div>
+
+                <div class="sauceOption">
+                    <h4>Select Sauce</h4>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButtonForSaurce"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Choose Sauce
+                        </button>
+                        <div class="sauceDropdown dropdown-menu" aria-labelledby="dropdownMenuButtonForSaurce">
+                            <a class="dropdown-item" href="#" id="regularTomato">Regular Tomato: no charge</a>
+                            <a class="dropdown-item" href="#" id="heartyTomato">Hearty Tomato: +$.99</a>
+                            <a class="dropdown-item" href="#" id="bbqSauce">BBQ Sauce: +$1.99</a>
+                        </div>
+                    </div>
+                    <p id="selectedSauce">Selected Sauce - Regular Tomato: no charge</p>
+                </div>
+
+                <div class="toppingOption">
+                    <h4>Add Toppings - Each $ .99</h4>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="Pepperoni" id="pepperoni" />Pepperoni
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="" id="sausage" />Sausage
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="" id="ham" />Ham
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="" id="bacon" />Bacon
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="" id="salami" />Salami
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" value="" id="peppers" />Peppers
+                        </label>
+                    </div>
+                    <p>Toppings selected: <span id="selectedToppings"></span></p>
+                </div>
+            </div>
+            <br />
+            <!-- <button id="finishBtn">Finished Building Pizza</button> -->
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+                Finished Building Pizza
+            </button>
+            <br />
+            <br />
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Are you sure you are done?
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <!-- <div class="modal-body">
+          Are you sure you are done?
+        </div> -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-success" id="saveBtn">
+                                Save changes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div id="billingInfo"> -->
+    <div id="billingInfo" class="hidden container">
+        <div class="row">
+            <form class="form-horizontal">
+                <fieldset>
+                    <!-- Address form -->
+
+                    <h2>Billing Address</h2>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="sameAsDeliveryInfo" />
+                        <label class="form-check-label" for="sameAsDeliveryInfo">Same as delivery information</label>
+                    </div>
+                    <!-- full-name input-->
+                    <div class="control-group">
+                        <label class="control-label">Full Name</label>
+                        <div class="controls">
+                            <input id="fullName2" name="fullName" type="text" placeholder="Full Name"
+                                class="input-xlarge" />
+                            <p class="help-block"></p>
+                            <p class="handleError" id="fullName2Error"></p>
+                        </div>
+                    </div>
+
+                    <!-- address-line1 input-->
+                    <div class="control-group">
+                        <label class="control-label">Address Line 1</label>
+                        <div class="controls">
+                            <input id="address1" name="address-line1" type="text" placeholder="Street address"
+                                class="input-xlarge" />
+                            <!-- <p class="help-block">Street address</p> -->
+                            <p class="handleError" id="address1Error"></p>
+                        </div>
+                    </div>
+                    <!-- address-line2 input-->
+                    <div class="control-group">
+                        <label class="control-label">Address Line 2 - Optional</label>
+                        <div class="controls">
+                            <input id="address2" name="address-line2" type="text"
+                                placeholder="Apartment, suite , unit, building, floor, etc." class="input-xlarge" />
+
+                            <!-- <p class="help-block">
+                  Apartment, suite , unit, building, floor, etc.
+                </p> -->
+                            <p class="handleError" id=""></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">City / Town</label>
+                        <div class="controls">
+                            <input id="city2" name="city" type="text" placeholder="city" class="input-xlarge" />
+                            <p class="help-block"></p>
+                            <p class="handleError" id="city2Error"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">State</label>
+                        <div class="controls">
+                            <input id="state2" name="state" type="text" placeholder="state" class="input-xlarge" />
+                            <p class="help-block"></p>
+                            <p class="handleError" id="state2Error"></p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Zip / Postal Code</label>
+                        <div class="controls">
+                            <input id="zip2" name="zip" type="text" placeholder="zip code" class="input-xlarge" />
+                            <p class="help-block"></p>
+                            <p class="handleError" id="zip2Error"></p>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-success" id="btnPayment">
+                Continue to Payment
+            </button>
+        </div>
+    </div>
+
+
+    <div id="divPayment" class="container hidden">
+        <h2>Payment</h2>
+        <article class="card col-12 col-md-8">
+            <form role="form">
+
+
+                <div class="form-group">
+                    <label for="cardNumber">Card number (<span id="idCardType"></span>)</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="cardNumber" placeholder="" id="cardNumber" />
+                    </div>
+                    <p id="numberError" class='handleError'></p>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="form-group">
+                            <label><span class="hidden-xs">Expiration</span> </label>
+                            <div class="form-inline">
+                                <select class="form-control monthSelect" style="width: 45%">
+                                    <option>MM</option>
+                                    <option>01</option>
+                                    <option>02</option>
+                                    <option>03</option>
+                                    <option>04</option>
+                                    <option>05</option>
+                                    <option>06</option>
+                                    <option>07</option>
+                                    <option>08</option>
+                                    <option>09</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                </select>
+                                <span style="width: 10%; text-align: center"> / </span>
+                                <select class="form-control yearSelect" style="width: 45%">
+                                    <option>Year</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                    <option>2026</option>
+                                    <option>2028</option>
+                                    <option>2029</option>
+                                    <option>2030</option>
+                                    <option>2031</option>
+                                    <option>2032</option>
+                                    <option>2033</option>
+                                </select>
+                            </div>
+                            <p id="expError" class='handleError'></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label>CVV</label>
+                            <input class="form-control" required="" type="text" placeholder="e.g., 123" id="cvv" />
+                        </div>
+                        <p id="cvvError" class='handleError'></p>
+                    </div>
+                </div>
+            </form>
+        </article>
+        <br>
+        <div class="card col-12 col-md-8">
+
+            <button class="subscribe btn btn-success btn-block" type="button" id="confirmCard">
+                Place Your Order
+        </div>
+        </button>
+    </div>
+
+    <div id="orderConfirmation" class="container hidden">
+        <div>
+            <h2>Order Confirmation</h2>
+            <br>
+            <br>
+            <h4>Thank you for order!</h4>
+            <br>
+            <h3>Order Summary</h3>
+            <div>
+                <p id="pizzaDough"></p>
+                <p id="pizzaSize"></p>
+                <p id="pizzaCheese"></p>
+                <p id="pizzaSauce"></p>
+                <p id="pizzaTopping"></p>
+                <b>Total: $<p id="pizzaPrice"></p></b>
+                <h3>Payment Type</h3>
+                <p id="paymentType"></p>
+            </div>
+            <div class="justifyContent">
+                <article class="card col-12 col-md-5">
+                    <h3>Delivery Address</h3>
+                    <p id="deliveryName"></p>
+                    <p id="deliveryAddress1"></p>
+                    <p id="deliveryAddress2"></p>
+                    <p id="deliveryEmail"></p>
+                    <p id="deliveryPhone"></p>
+                    <p id="deliveryCity"></p>
+                    <p id="deliveryZip"></p>
+                </article>
+
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <hr />
+            <div class="col-lg-12">
+                <div class="col-md-8">
+                    <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
+                </div>
+                <div class="col-md-4">
+                    <p class="muted pull-right">
+                        © 2021 Build Pizza. All rights reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".addressType .dropdown-menu a").click(function () {
+                $(".addressType .btn:first-child").text($(this).text());
+                $(".addressType  .btn:first-child").val($(this).text());
+            });
+        });
+    </script>
+</body>
+
+</html>
